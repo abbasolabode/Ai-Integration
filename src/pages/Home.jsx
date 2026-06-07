@@ -13,7 +13,7 @@ import GetInTouch from "../ui/GetInTouch";
 
 export default function Home() {
   return (
-    <>
+    <div className="overflow-hidden">
       <HomeHeroSection />
       <AboutCompanyCards />
       <ConstructionServiceCards />
@@ -26,6 +26,6 @@ export default function Home() {
       <FeaturedProjects />
       <HomeBlog />
       <GetInTouch />
-    </>
+    </div>
   )
 }
