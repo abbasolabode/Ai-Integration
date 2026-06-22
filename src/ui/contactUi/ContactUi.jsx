@@ -70,6 +70,7 @@ const projectDetails = [
 ]
 
 export default function ContactUi() {
+    // eslint-disable-next-line no-unused-vars
     const { handleSubmit, register, reset, formState: { errors, isSubmitting }, } = useForm();
     const { mutate: sendFormData, isPending } = useContactMessage()
 
@@ -81,7 +82,7 @@ export default function ContactUi() {
         sendFormData(formData)
     }
     return (
-        <div className="min-h-screen pt-10 flex flex-col space-y-6 pb-10`" >
+        <div className="min-h-screen pt-10 flex flex-col space-y-6 pb-10 overflow-x-hidden" >
             <section className="max-w-6xl  px-4 sm:px-6 lg:px-8 text-white pt-10 ">
                 <div className="flex flex-col space-y-3">
                     <GoToHome />
@@ -110,14 +111,14 @@ export default function ContactUi() {
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
                     <div>
                         <p className="text-xs uppercase tracking-wider text-yellow-600 font-bold">Request A Quote</p>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 leading-tight">Tell us About Your Project</h2>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 lg:w-full leading-tight">Tell us About Your Project</h2>
                         <p className="text-gray-600 mt-3 text-[15px] sm:text-base leading-relaxed">Share a few details and our project managers will get back to you with a tailored estimate, timeline, and next steps</p>
                     </div>
                 </div>
 
 
                 <div className="space-y-4  p-4 rounded-lg bg-stone-300 ">
-                    <div className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden">
+                    <div className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100">
                         {/* Icon */}
                         {projectDetails.map(projectDetail => (
                             <React.Fragment>
@@ -133,11 +134,11 @@ export default function ContactUi() {
             </section>
 
             {/* Form  */}
-            <form action="" onSubmit={handleSubmit(onSubmit)} className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+            <form action="" onSubmit={handleSubmit(onSubmit)} className="w-full overflow-hidden max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
                 <div className="bg-white rounded-3xl shadow-[0_40px_80px_rgba(17,24,39,0.12)] p-6 sm:p-10 lg:p-14">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                         {/* Left: Form (wide) */}
-                        <div className="lg:col-span-7 flex flex-col justify-center">
+                        <div className="lg:col-span-7 flex flex-col justify-center min-w-0">
                             <div className="mb-6">
                                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">Start Your Project</h3>
                                 <p className="mt-3 text-gray-600 max-w-3xl text-lg">Tell us about your vision and we'll respond with a tailored estimate, timeline, and next steps.</p>
@@ -231,7 +232,7 @@ export default function ContactUi() {
                         </div>
 
                         {/* Right: Decorative / Info panel */}
-                        <aside className="lg:col-span-5 rounded-2xl p-8 flex flex-col justify-center bg-gradient-to-br from-yellow-50 via-white to-white">
+                        <aside className="lg:col-span-5 rounded-2xl p-8 flex flex-col justify-center min-w-0 bg-gradient-to-br from-yellow-50 via-white to-white">
                             <div className="mb-6">
                                 <p className="text-sm uppercase font-semibold text-yellow-600">Let's build together</p>
                                 <h4 className="mt-3 text-2xl font-extrabold text-gray-900">Consultation & Planning</h4>
