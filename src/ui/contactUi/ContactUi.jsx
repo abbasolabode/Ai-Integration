@@ -7,6 +7,7 @@ import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import GoToHome from "../../resuables/GoToHome";
 import { useForm } from "react-hook-form";
+import { useContactMessage } from "../../hooks/useContactMessage";
 
 
 const selectOptions = ["Renovation & Remodelling", "Infrastructure", "Industrial construction", "Residential construction", "Commercial building"]
@@ -70,12 +71,14 @@ const projectDetails = [
 
 export default function ContactUi() {
     const { handleSubmit, register, reset, formState: { errors, isSubmitting }, } = useForm();
+    const { mutate: sendFormData, isPending } = useContactMessage()
 
 
 
     const onSubmit = (formData) => {
         if (!formData) return;
         console.log(formData)
+        sendFormData(formData)
     }
     return (
         <div className="min-h-screen pt-10 flex flex-col space-y-6 pb-10`" >
@@ -144,7 +147,7 @@ export default function ContactUi() {
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full name</label>
                                     <input
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || isPending}
                                         {...register("fullname")}
                                         id="fullname"
                                         name="fullname"
@@ -158,7 +161,7 @@ export default function ContactUi() {
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                                     <input
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || isPending}
                                         {...register("email")}
                                         id="email"
                                         name="email"
@@ -172,7 +175,7 @@ export default function ContactUi() {
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone number</label>
                                     <input
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || isPending}
                                         id="phone"
                                         {...register("phone")}
                                         name="phone"
@@ -186,7 +189,7 @@ export default function ContactUi() {
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project type</label>
                                     <select
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || isPending}
                                         id="projectType"
                                         {...register("projectType")}
                                         name="projectType"
@@ -204,7 +207,7 @@ export default function ContactUi() {
                                 <div className="md:col-span-2 lg:col-span-2">
                                     <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project message</label>
                                     <textarea
-                                        disabled={isSubmitting}
+                                        disabled={isSubmitting || isPending}
                                         id="message"
                                         {...register("message")}
                                         name="message"
@@ -219,10 +222,10 @@ export default function ContactUi() {
                             <div className="mt-8">
                                 <button
                                     type="submit"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || isPending}
                                     className="inline-flex items-center px-10 py-3 border border-transparent text-lg font-bold rounded-full text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 shadow-2xl"
                                 >
-                                    Submit
+                                    {isPending || isSubmitting ? "Submitting..." : "Submit"}
                                 </button>
                             </div>
                         </div>
