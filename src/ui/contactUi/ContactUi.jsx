@@ -116,8 +116,81 @@ export default function ContactUi() {
                         ))}
                     </div>
                 </div>
-
             </section>
+
+            {/* Form  */}
+            <form action="" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-white rounded-lg shadow-sm p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full name</label>
+                            <input
+                                id="fullname"
+                                name="fullname"
+                                type="text"
+                                placeholder="Your full name"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                            <input
+                                id="email"
+                                name="email"
+                                type="email"
+                                placeholder="you@example.com"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone number</label>
+                            <input
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                placeholder="(123) 456-7890"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project type</label>
+                            <select
+                                id="projectType"
+                                name="projectType"
+                                className="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
+                            >
+                                <option value="new-build">New build</option>
+                                <option value="renovation">Renovation</option>
+                                <option value="infrastructure">Infrastructure</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div className="md:col-span-2">
+                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                placeholder="Describe your project, goals, and any constraints"
+                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
+                            />
+                        </div>
+                    </div>
+
+                    <div className="mt-4 flex justify-end">
+                        <button
+                            type="submit"
+                            className="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
 
         </div>
     )
