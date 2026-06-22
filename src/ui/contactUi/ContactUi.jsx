@@ -6,7 +6,10 @@ import { CiPhone } from "react-icons/ci";
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import GoToHome from "../../resuables/GoToHome";
+import { useForm } from "react-hook-form";
 
+
+const selectOptions = ["Renovation & Remodelling", "Infrastructure", "Industrial construction", "Residential construction", "Commercial building"]
 
 const cards = [
     {
@@ -66,8 +69,16 @@ const projectDetails = [
 ]
 
 export default function ContactUi() {
+    const { handleSubmit, register, reset, formState: { errors, isSubmitting }, } = useForm();
+
+
+
+    const onSubmit = (formData) => {
+        if (!formData) return;
+        console.log(formData)
+    }
     return (
-        <div className="min-h-screen pt-10 flex flex-col space-y-6" >
+        <div className="min-h-screen pt-10 flex flex-col space-y-6 pb-10`" >
             <section className="max-w-6xl  px-4 sm:px-6 lg:px-8 text-white pt-10 ">
                 <div className="flex flex-col space-y-3">
                     <GoToHome />
@@ -103,7 +114,7 @@ export default function ContactUi() {
 
 
                 <div className="space-y-4  p-4 rounded-lg bg-stone-300 ">
-                    <div className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100">
+                    <div className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100 overflow-hidden">
                         {/* Icon */}
                         {projectDetails.map(projectDetail => (
                             <React.Fragment>
@@ -119,7 +130,7 @@ export default function ContactUi() {
             </section>
 
             {/* Form  */}
-            <form action="" className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+            <form action="" onSubmit={handleSubmit(onSubmit)} className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
                 <div className="bg-white rounded-3xl shadow-[0_40px_80px_rgba(17,24,39,0.12)] p-6 sm:p-10 lg:p-14">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                         {/* Left: Form (wide) */}
@@ -133,65 +144,82 @@ export default function ContactUi() {
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full name</label>
                                     <input
+                                        disabled={isSubmitting}
+                                        {...register("fullname")}
                                         id="fullname"
                                         name="fullname"
                                         type="text"
                                         placeholder="Your full name"
-                                        className="mt-2 block w-full rounded-2xl border border-gray-200 bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                                        className={`mt-2 block w-full rounded-2xl border ${errors.fullname ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
+                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.fullname?.message || "\u00A0"}</p>
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                                     <input
+                                        disabled={isSubmitting}
+                                        {...register("email")}
                                         id="email"
                                         name="email"
                                         type="email"
                                         placeholder="you@example.com"
-                                        className="mt-2 block w-full rounded-2xl border border-gray-200 bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                                        className={`mt-2 block w-full rounded-2xl border ${errors.email ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
+                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.email?.message || "\u00A0"}</p>
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone number</label>
                                     <input
+                                        disabled={isSubmitting}
                                         id="phone"
+                                        {...register("phone")}
                                         name="phone"
                                         type="tel"
                                         placeholder="(123) 456-7890"
-                                        className="mt-2 block w-full rounded-2xl border border-gray-200 bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                                        className={`mt-2 block w-full rounded-2xl border ${errors.phone ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
+                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.phone?.message || "\u00A0"}</p>
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project type</label>
                                     <select
+                                        disabled={isSubmitting}
                                         id="projectType"
+                                        {...register("projectType")}
                                         name="projectType"
-                                        className="mt-2 block w-full rounded-2xl border border-gray-200 bg-white p-4 text-lg focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                                        className={`mt-2 block w-full rounded-2xl border ${errors.projectType ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-white p-4 text-lg focus:outline-none`}
                                     >
-                                        <option value="new-build">New build</option>
-                                        <option value="renovation">Renovation</option>
-                                        <option value="infrastructure">Infrastructure</option>
-                                        <option value="other">Other</option>
+                                        <option className="text-xs" value="new-build">New build</option>
+                                        {selectOptions.map((option, i) => (
+                                            <option className="text-xs" key={i} value={option}>{option}</option>
+
+                                        ))}
                                     </select>
+                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.projectType?.message || "\u00A0"}</p>
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-2">
                                     <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project message</label>
                                     <textarea
+                                        disabled={isSubmitting}
                                         id="message"
+                                        {...register("message")}
                                         name="message"
                                         rows="6"
                                         placeholder="Describe your project, goals, and any constraints"
-                                        className="mt-2 block w-full rounded-2xl border border-gray-200 bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none focus:ring-4 focus:ring-yellow-200"
+                                        className={`mt-2 block w-full rounded-2xl border ${errors.message ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
+                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.message?.message || "\u00A0"}</p>
                                 </div>
                             </div>
-
+                            {/* Submit button */}
                             <div className="mt-8">
                                 <button
                                     type="submit"
+                                    disabled={isSubmitting}
                                     className="inline-flex items-center px-10 py-3 border border-transparent text-lg font-bold rounded-full text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 shadow-2xl"
                                 >
                                     Submit
