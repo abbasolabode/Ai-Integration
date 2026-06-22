@@ -109,7 +109,7 @@ export default function ContactUi() {
 
             <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 space-y-5 w-full ">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-                    <div className="w-full">
+                    <div className="w-full lg:col-span-5">
                         <p className="text-xs uppercase tracking-wider text-yellow-600 font-bold">Request A Quote</p>
                         <h2 className="w-full text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 leading-tight">Tell us About Your Project</h2>
                         <p className="text-gray-600 mt-3 text-[15px] sm:text-base leading-relaxed">Share a few details and our project managers will get back to you with a tailored estimate, timeline, and next steps</p>
