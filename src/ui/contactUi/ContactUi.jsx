@@ -107,18 +107,18 @@ export default function ContactUi() {
             </section>
 
 
-            <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 space-y-5">
+            <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 space-y-5 w-full ">
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
-                    <div>
+                    <div className="w-full">
                         <p className="text-xs uppercase tracking-wider text-yellow-600 font-bold">Request A Quote</p>
-                        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 lg:w-full leading-tight">Tell us About Your Project</h2>
+                        <h2 className="w-full text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 leading-tight">Tell us About Your Project</h2>
                         <p className="text-gray-600 mt-3 text-[15px] sm:text-base leading-relaxed">Share a few details and our project managers will get back to you with a tailored estimate, timeline, and next steps</p>
                     </div>
                 </div>
 
 
                 <div className="space-y-4  p-4 rounded-lg bg-stone-300 ">
-                    <div className="flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100">
+                    <div className="grid grid-cols-1  md:flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100">
                         {/* Icon */}
                         {projectDetails.map(projectDetail => (
                             <React.Fragment>
@@ -196,7 +196,7 @@ export default function ContactUi() {
                                         name="projectType"
                                         className={`mt-2 block w-full rounded-2xl border ${errors.projectType ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-white p-4 text-lg focus:outline-none`}
                                     >
-                                        <option className="text-xs" value="new-build">New build</option>
+                                        <option className="text-xs" value="new-build">Build</option>
                                         {selectOptions.map((option, i) => (
                                             <option className="text-xs" key={i} value={option}>{option}</option>
 
