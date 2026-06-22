@@ -119,75 +119,82 @@ export default function ContactUi() {
             </section>
 
             {/* Form  */}
-            <form action="" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white rounded-lg shadow-sm p-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full name</label>
-                            <input
-                                id="fullname"
-                                name="fullname"
-                                type="text"
-                                placeholder="Your full name"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
-                            />
+            <form action="" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-12">
+                    <div className="max-w-[1100px] mx-auto">
+                        <div className="mb-6">
+                            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900">Start Your Project</h3>
+                            <p className="mt-2 text-gray-600 max-w-2xl">Share a few details and our project managers will reach out with a tailored estimate and timeline.</p>
                         </div>
 
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                            <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                placeholder="you@example.com"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
-                            />
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div className="lg:col-span-2">
+                                <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full name</label>
+                                <input
+                                    id="fullname"
+                                    name="fullname"
+                                    type="text"
+                                    placeholder="Your full name"
+                                    className="mt-2 block w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                />
+                            </div>
+
+                            <div className="lg:col-span-2">
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+                                <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="you@example.com"
+                                    className="mt-2 block w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                />
+                            </div>
+
+                            <div className="lg:col-span-2">
+                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone number</label>
+                                <input
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    placeholder="(123) 456-7890"
+                                    className="mt-2 block w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                />
+                            </div>
+
+                            <div className="lg:col-span-2">
+                                <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project type</label>
+                                <select
+                                    id="projectType"
+                                    name="projectType"
+                                    className="mt-2 block w-full rounded-xl border border-gray-200 bg-white p-3 text-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                >
+                                    <option value="new-build">New build</option>
+                                    <option value="renovation">Renovation</option>
+                                    <option value="infrastructure">Infrastructure</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div className="lg:col-span-4">
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project message</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="6"
+                                    placeholder="Describe your project, goals, and any constraints"
+                                    className="mt-2 block w-full rounded-xl border border-gray-200 bg-gray-50 p-3 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                                />
+                            </div>
                         </div>
 
-                        <div>
-                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone number</label>
-                            <input
-                                id="phone"
-                                name="phone"
-                                type="tel"
-                                placeholder="(123) 456-7890"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
-                            />
-                        </div>
-
-                        <div>
-                            <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project type</label>
-                            <select
-                                id="projectType"
-                                name="projectType"
-                                className="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
+                        <div className="mt-8 flex justify-end">
+                            <button
+                                type="submit"
+                                className="inline-flex items-center px-8 py-3 border border-transparent text-base font-semibold rounded-full text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 shadow-lg"
                             >
-                                <option value="new-build">New build</option>
-                                <option value="renovation">Renovation</option>
-                                <option value="infrastructure">Infrastructure</option>
-                                <option value="other">Other</option>
-                            </select>
+                                Submit
+                            </button>
                         </div>
-
-                        <div className="md:col-span-2">
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                rows="5"
-                                placeholder="Describe your project, goals, and any constraints"
-                                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-yellow-500 focus:ring-yellow-500 sm:text-sm p-2"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="mt-4 flex justify-end">
-                        <button
-                            type="submit"
-                            className="inline-flex items-center px-6 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
-                        >
-                            Submit
-                        </button>
                     </div>
                 </div>
             </form>
