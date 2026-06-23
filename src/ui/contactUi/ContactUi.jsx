@@ -15,7 +15,7 @@ const selectOptions = ["Renovation & Remodelling", "Infrastructure", "Industrial
 const cards = [
     {
         id: 1,
-        icon: <CiPhone className="w-11 h-11 rounded-lg bg-yellow-400/15 text-yellow-600 flex items-center justify-center mb-4" />,
+        icon: <CiPhone className="w-11 h-11 rounded-lg bg-black text-yellow-600 flex items-center justify-center mb-4" />,
         text1: "Call us",
         text2: "+1 (555) 123-4567",
         text3: "Mon-Sat, 8:00AM - 6:00PM",
@@ -23,7 +23,7 @@ const cards = [
 
     {
         id: 2,
-        icon: <CiLocationOn className="w-11 h-11 rounded-lg bg-yellow-400/15 text-yellow-600 flex items-center justify-center mb-4" />,
+        icon: <CiLocationOn className="w-11 h-11 rounded-lg bg-black text-yellow-600 flex items-center justify-center mb-4" />,
         text1: "Visit Site",
         text2: "120 Foundry Ave, Suit 400",
         text3: "Chicago, IL, 60607",
@@ -31,7 +31,7 @@ const cards = [
 
     {
         id: 3,
-        icon: <CiMail className="w-11 h-11 rounded-lg bg-yellow-400/15 text-yellow-600 flex items-center justify-center mb-4" />,
+        icon: <CiMail className="w-11 h-11 rounded-lg bg-black text-yellow-600 flex items-center justify-center mb-4" />,
         text1: "email us",
         text2: "hello@buildrigt.com",
         text3: "We respond within 24 hours",
@@ -39,7 +39,7 @@ const cards = [
 
     {
         id: 4,
-        icon: <IoTimeOutline className="w-11 h-11 rounded-lg bg-yellow-400/15 text-yellow-600 flex items-center justify-center mb-4" />,
+        icon: <IoTimeOutline className="w-11 h-11 rounded-lg bg-black text-yellow-600 flex items-center justify-center mb-4" />,
         text1: "Working Hours",
         text2: "Mon - Fr 8AM - 6PM",
         text3: "Saturday 8AM - 2PM",
@@ -87,7 +87,7 @@ export default function ContactUi() {
             <section className="max-w-6xl  px-4 sm:px-6 lg:px-8 text-white pt-10 ">
                 <div className="flex flex-col space-y-3">
                     <GoToHome />
-                    <p className="w-45 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/15 border border-yellow-400/30 text-yellow-300 text-xs sm:text-sm font-medium mb-5">Let's Build Together</p>
+                    <p className="w-45 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black border border-yellow-400/30 text-yellow-300 text-xs sm:text-sm font-medium mb-5">Let's Build Together</p>
                 </div>
                 <p className="text-base sm:text-lg md:text-xl text-gray-500 max-w-2xl">Whether you're planning a new build, renovation, or large-scale infrastructure project — our team is ready to bring your vision to life with precision and care.</p>
             </section>
@@ -101,9 +101,6 @@ export default function ContactUi() {
                             {card.icon}
                             <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-1">{card.text1}</p>
                             <p className="text-base sm:text-lg font-semibold text-gray-900 leading-snug">{card.text2}</p>
-
-
-
                             <p className="text-sm text-gray-600 mt-1">{card.text3}</p>
                         </div>
                     ))}
