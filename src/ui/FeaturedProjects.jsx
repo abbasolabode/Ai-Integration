@@ -53,7 +53,7 @@ export default function FeaturedProjects() {
             const next = lastSlide ? 0 : currentIndex + 1;
             //Update the state with current index
             setCurrentIndex(next);
-        }, 3000) //Moves every 4 seconds
+        }, 3000) //Moves every 3 seconds
 
         //Clear the interval when the component unmounts or when the currentIndex changes to prevent memory leaks
         return () => clearInterval(interval);
@@ -66,7 +66,7 @@ export default function FeaturedProjects() {
         const firstSlide = currentIndex === 0;
         //If we are at the first slide, then set the state to the last element of the array
         const prev = firstSlide ? movingSlider.length - 1 : currentIndex - 1;
-        //Update teh state with the new index or value
+        //Update the state with the new index or value
         setCurrentIndex(prev);
     };
 

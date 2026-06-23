@@ -1,10 +1,9 @@
 import React from "react";
 import { FaWarehouse } from "react-icons/fa";
-import { CiLocationOn, CiMail } from "react-icons/ci";
+import { CiLocationOn, CiMail, CiPhone } from "react-icons/ci";
+import { SyncLoader } from "react-spinners";
 import { FaHelmetSafety } from "react-icons/fa6";
-import { CiPhone } from "react-icons/ci";
-import { IoShieldCheckmarkOutline } from "react-icons/io5";
-import { IoTimeOutline } from "react-icons/io5";
+import { IoShieldCheckmarkOutline, IoTimeOutline } from "react-icons/io5";
 import GoToHome from "../../resuables/GoToHome";
 import { useForm } from "react-hook-form";
 import { useContactMessage } from "../../hooks/useContactMessage";
@@ -72,7 +71,7 @@ const projectDetails = [
 export default function ContactUi() {
     // eslint-disable-next-line no-unused-vars
     const { handleSubmit, register, reset, formState: { errors, isSubmitting }, } = useForm();
-    const { mutate: sendFormData, isPending } = useContactMessage()
+    const { mutate: sendFormData, isPending } = useContactMessage();
 
 
 
@@ -124,7 +123,7 @@ export default function ContactUi() {
                     <div className="grid grid-cols-1  md:flex items-start gap-8 p-4 rounded-lg bg-gray-50 border border-gray-100">
                         {/* Icon */}
                         {projectDetails.map(projectDetail => (
-                            <React.Fragment>
+                            <React.Fragment key={projectDetail.id}>
                                 <span className="shrink-0 w-10 h-10 rounded-md bg-gray-900 text-yellow-400 flex items-center justify-center">{projectDetail.icon}</span>
                                 <div className="">
                                     <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{projectDetail.header}</h3>
@@ -140,7 +139,7 @@ export default function ContactUi() {
             <form action="" onSubmit={handleSubmit(onSubmit)} className="w-full overflow-hidden max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
                 <div className="bg-white rounded-3xl shadow-[0_40px_80px_rgba(17,24,39,0.12)] p-6 sm:p-10 lg:p-14">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                        {/* Left: Form (wide) */}
+                        {/* Left: Form */}
                         <div className="lg:col-span-7 flex flex-col justify-center min-w-0">
                             <div className="mb-6">
                                 <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900">Start Your Project</h3>
@@ -159,7 +158,7 @@ export default function ContactUi() {
                                         placeholder="Your full name"
                                         className={`mt-2 block w-full rounded-2xl border ${errors.fullname ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
-                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.fullname?.message || "\u00A0"}</p>
+                                    {errors.fullname && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.fullname?.message || "\u00A0"}</p>}
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-1">
@@ -173,7 +172,7 @@ export default function ContactUi() {
                                         placeholder="you@example.com"
                                         className={`mt-2 block w-full rounded-2xl border ${errors.email ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
-                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.email?.message || "\u00A0"}</p>
+                                    {errors?.email && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.email?.message || "\u00A0"}</p>}
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-1">
@@ -187,7 +186,7 @@ export default function ContactUi() {
                                         placeholder="(123) 456-7890"
                                         className={`mt-2 block w-full rounded-2xl border ${errors.phone ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
-                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.phone?.message || "\u00A0"}</p>
+                                    {errors?.phone && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.phone?.message || "\u00A0"}</p>}
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-1">
@@ -205,7 +204,7 @@ export default function ContactUi() {
 
                                         ))}
                                     </select>
-                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.projectType?.message || "\u00A0"}</p>
+                                    {errors?.projectType && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.projectType?.message || "\u00A0"}</p>}
                                 </div>
 
                                 <div className="md:col-span-2 lg:col-span-2">
@@ -219,22 +218,27 @@ export default function ContactUi() {
                                         placeholder="Describe your project, goals, and any constraints"
                                         className={`mt-2 block w-full rounded-2xl border ${errors.message ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
                                     />
-                                    <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.message?.message || "\u00A0"}</p>
+                                    {errors?.message && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.message?.message || "\u00A0"}</p>}
                                 </div>
                             </div>
                             {/* Submit button */}
-                            <div className="mt-8">
+                            <div className="mt-8 flex items-center gap-4">
                                 <button
                                     type="submit"
                                     disabled={isSubmitting || isPending}
-                                    className="inline-flex items-center px-10 py-3 border border-transparent text-lg font-bold rounded-full text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 shadow-2xl"
+                                    className="inline-flex items-center px-10 py-3 border border-transparent text-lg font-bold rounded-2xl text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 shadow-2xl"
                                 >
                                     {isPending || isSubmitting ? "Submitting..." : "Submit"}
                                 </button>
+
+                                {/* Spinner container */}
+                                <span>
+                                    {(isPending || isSubmitting) && <SyncLoader />}
+                                </span>
                             </div>
                         </div>
 
-                        {/* Right: Decorative / Info panel */}
+                        {/* Right container/ Info panel */}
                         <aside className="lg:col-span-5 rounded-2xl p-8 flex flex-col justify-center min-w-0 bg-gradient-to-br from-yellow-50 via-white to-white">
                             <div className="mb-6">
                                 <p className="text-sm uppercase font-semibold text-yellow-600">Let's build together</p>
