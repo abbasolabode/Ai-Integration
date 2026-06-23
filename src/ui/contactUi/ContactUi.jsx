@@ -7,6 +7,7 @@ import { IoShieldCheckmarkOutline, IoTimeOutline } from "react-icons/io5";
 import GoToHome from "../../resuables/GoToHome";
 import { useForm } from "react-hook-form";
 import { useContactMessage } from "../../hooks/useContactMessage";
+import ContactInput from "../../resuables/ContactInput";
 
 
 const selectOptions = ["Renovation & Remodelling", "Infrastructure", "Industrial construction", "Residential construction", "Commercial building"]
@@ -69,7 +70,7 @@ const projectDetails = [
 ]
 
 export default function ContactUi() {
-    // eslint-disable-next-line no-unused-vars
+
     const { handleSubmit, register, reset, formState: { errors, isSubmitting }, } = useForm();
     const { mutate: sendFormData, isPending } = useContactMessage();
 
@@ -77,11 +78,12 @@ export default function ContactUi() {
 
     const onSubmit = (formData) => {
         if (!formData) return;
-        console.log(formData)
-        sendFormData(formData)
+        sendFormData(formData, {
+            onSettled: () => reset(),
+        });
     }
     return (
-        <div className="min-h-screen pt-10 flex flex-col space-y-6 pb-10 overflow-x-hidden" >
+        <div className="min-h-screen pt-10 flex flex-col space-y-6 pb-10 overflow-x-hidden " >
             <section className="max-w-6xl  px-4 sm:px-6 lg:px-8 text-white pt-10 ">
                 <div className="flex flex-col space-y-3">
                     <GoToHome />
@@ -136,7 +138,7 @@ export default function ContactUi() {
             </section>
 
             {/* Form  */}
-            <form action="" onSubmit={handleSubmit(onSubmit)} className="w-full overflow-hidden max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+            <form action="" onSubmit={handleSubmit(onSubmit)} className="w-full overflow-hidden max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
                 <div className="bg-white rounded-3xl shadow-[0_40px_80px_rgba(17,24,39,0.12)] p-6 sm:p-10 lg:p-14">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                         {/* Left: Form */}
@@ -147,57 +149,30 @@ export default function ContactUi() {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="md:col-span-2 lg:col-span-1">
-                                    <label htmlFor="fullname" className="block text-sm font-medium text-gray-700">Full name</label>
-                                    <input
-                                        disabled={isSubmitting || isPending}
-                                        {...register("fullname")}
-                                        id="fullname"
-                                        name="fullname"
-                                        type="text"
-                                        placeholder="Your full name"
-                                        className={`mt-2 block w-full rounded-2xl border ${errors.fullname ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
-                                    />
-                                    {errors.fullname && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors.fullname?.message || "\u00A0"}</p>}
-                                </div>
+                                <ContactInput label="Full Name" id="fullname" disabled={isSubmitting || isPending} register={register} placeholder="Your full name" type="text" rules={{ required: "Full Name is reqiured" }} error={errors} />
 
-                                <div className="md:col-span-2 lg:col-span-1">
-                                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                                    <input
-                                        disabled={isSubmitting || isPending}
-                                        {...register("email")}
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        placeholder="you@example.com"
-                                        className={`mt-2 block w-full rounded-2xl border ${errors.email ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
-                                    />
-                                    {errors?.email && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.email?.message || "\u00A0"}</p>}
-                                </div>
+                                <ContactInput label="Email" id="email" disabled={isSubmitting || isPending} register={register} placeholder="Enter your email" type="text" rules={{ required: "Email is reqiured" }} pattern={{
+                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                    message: "Please enter a valid email address",
+                                }} error={errors} />
 
-                                <div className="md:col-span-2 lg:col-span-1">
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone number</label>
-                                    <input
-                                        disabled={isSubmitting || isPending}
-                                        id="phone"
-                                        {...register("phone")}
-                                        name="phone"
-                                        type="tel"
-                                        placeholder="(123) 456-7890"
-                                        className={`mt-2 block w-full rounded-2xl border ${errors.phone ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
-                                    />
-                                    {errors?.phone && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.phone?.message || "\u00A0"}</p>}
-                                </div>
+                                <ContactInput label="Phone Number" id="phone" disabled={isSubmitting || isPending} register={register} placeholder="Phone number" type="text" rules={{ required: "Phone number is reqiured" }} error={errors} pattern={{
+                                    value: /^\+?[1-9]\d{1,14}$/,
+                                    message: "Please enter a valid email address",
+                                }} />
 
                                 <div className="md:col-span-2 lg:col-span-1">
                                     <label htmlFor="projectType" className="block text-sm font-medium text-gray-700">Project type</label>
                                     <select
                                         disabled={isSubmitting || isPending}
                                         id="projectType"
-                                        {...register("projectType")}
+                                        {...register("projectType", {
+                                            required: "Project type is required",
+                                        })}
                                         name="projectType"
                                         className={`mt-2 block w-full rounded-2xl border ${errors.projectType ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-white p-4 text-lg focus:outline-none`}
                                     >
+                                        <option className="text-xs" value="" hidden>Select project type</option>
                                         <option className="text-xs" value="new-build">Build</option>
                                         {selectOptions.map((option, i) => (
                                             <option className="text-xs" key={i} value={option}>{option}</option>
@@ -207,26 +182,14 @@ export default function ContactUi() {
                                     {errors?.projectType && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.projectType?.message || "\u00A0"}</p>}
                                 </div>
 
-                                <div className="md:col-span-2 lg:col-span-2">
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Project message</label>
-                                    <textarea
-                                        disabled={isSubmitting || isPending}
-                                        id="message"
-                                        {...register("message")}
-                                        name="message"
-                                        rows="6"
-                                        placeholder="Describe your project, goals, and any constraints"
-                                        className={`mt-2 block w-full rounded-2xl border ${errors.message ? "border-red-300 focus:ring-red-200" : "border-gray-200 focus:ring-yellow-200"} bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none`}
-                                    />
-                                    {errors?.message && <p className="mt-2 min-h-[1.25rem] text-sm text-red-600">{errors?.message?.message || "\u00A0"}</p>}
-                                </div>
+                                <ContactInput label="Message" id="message" disabled={isSubmitting || isPending} register={register} placeholder="Write us what you want us to build for you" type="text" rules={{ required: "Message is reqiured" }} error={errors} />
                             </div>
                             {/* Submit button */}
                             <div className="mt-8 flex items-center gap-4">
                                 <button
                                     type="submit"
                                     disabled={isSubmitting || isPending}
-                                    className="inline-flex items-center px-10 py-3 border border-transparent text-lg font-bold rounded-2xl text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 shadow-2xl"
+                                    className="inline-flex cursor-pointer items-center px-10 py-3 border border-transparent text-lg font-bold rounded-2xl text-white bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 shadow-2xl"
                                 >
                                     {isPending || isSubmitting ? "Submitting..." : "Submit"}
                                 </button>
