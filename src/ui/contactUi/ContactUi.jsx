@@ -100,6 +100,9 @@ export default function ContactUi() {
                             {card.icon}
                             <p className="text-xs uppercase tracking-wider text-gray-500 font-semibold mb-1">{card.text1}</p>
                             <p className="text-base sm:text-lg font-semibold text-gray-900 leading-snug">{card.text2}</p>
+
+
+
                             <p className="text-sm text-gray-600 mt-1">{card.text3}</p>
                         </div>
                     ))}
@@ -118,7 +121,7 @@ export default function ContactUi() {
 
 
                 <div className="space-y-4  p-4 rounded-lg bg-stone-300 ">
-                    <div className="grid grid-cols-1  md:flex items-start gap-4 p-4 rounded-lg bg-gray-50 border border-gray-100">
+                    <div className="grid grid-cols-1  md:flex items-start gap-8 p-4 rounded-lg bg-gray-50 border border-gray-100">
                         {/* Icon */}
                         {projectDetails.map(projectDetail => (
                             <React.Fragment>

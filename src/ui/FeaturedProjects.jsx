@@ -9,8 +9,7 @@ const movingSlider = [
         description: "Luxury Residential Complex",
         img: "/images/building-underconsruction.jpg",
         tags: ["Residential", "Luxury", "Modern", "Eco-Friendly"],
-        bodyText:
-            "Premium residential community featuring 200 luxury units with modern amenities, landscaped grounds, and energy-efficient construction.",
+        bodyText: "Premium residential community featuring 200 luxury units with modern amenities, landscaped grounds, and energy-efficient construction.",
         link: "/project/prestige-homes",
     },
     {
@@ -19,8 +18,7 @@ const movingSlider = [
         description: "Educational Campus Development",
         img: "/images/university.jpg",
         tags: ["Educational", "Campus", "Multi-Building", "Student-Housing"],
-        bodyText:
-            "Innovative educational campus development featuring state-of-the-art facilities and sustainable design.",
+        bodyText: "Innovative educational campus development featuring state-of-the-art facilities and sustainable design.",
         link: "/project/state-university-system",
     },
     {
@@ -29,8 +27,7 @@ const movingSlider = [
         description: "Mixed-Use Urban Development",
         img: "/images/worker.jpg",
         tags: ["High-Rise", "Commercial", "Mixed-Use", "Sustainable"],
-        bodyText:
-            "Innovative mixed-use urban development featuring high-rise buildings, commercial spaces, and sustainable design.",
+        bodyText: "Innovative mixed-use urban development featuring high-rise buildings, commercial spaces, and sustainable design.",
         link: "/project/metropolitan-development",
     },
     {
@@ -39,8 +36,7 @@ const movingSlider = [
         description: "Industrial Facility Construction",
         img: "/images/worker-at-a-building.jpg",
         tags: ["Industrial", "Commercial", "Modern", "Eco-Friendly"],
-        bodyText:
-            "State-of-the-art industrial facility construction with modern amenities and sustainable design.",
+        bodyText: "State-of-the-art industrial facility construction with modern amenities and sustainable design.",
         link: "/project/techmanufacturing-corp",
     },
 ];
@@ -57,7 +53,7 @@ export default function FeaturedProjects() {
             const next = lastSlide ? 0 : currentIndex + 1;
             //Update the state with current index
             setCurrentIndex(next);
-        }, 4000)//Moves every 4 seconds
+        }, 3000) //Moves every 4 seconds
 
         //Clear the interval when the component unmounts or when the currentIndex changes to prevent memory leaks
         return () => clearInterval(interval);
