@@ -1,7 +1,7 @@
 import supabase from "./supabase"
 
 export async function getContactDetails(formData) {
-    if (!formData) return; //If formData does not exist return
+    if (!formData) return; // If formData does not exist return
 
     const { data, error } = await supabase
         .from('contact')

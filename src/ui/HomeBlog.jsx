@@ -63,7 +63,7 @@ export default function HomeBlog() {
 
     // Programmatic navigation
     const moveTo = () => {
-        navigate("/blog");
+        navigate("/news");
     };
 
     return (

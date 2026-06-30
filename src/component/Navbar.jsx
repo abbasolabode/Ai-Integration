@@ -46,7 +46,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-black text-white min-[834px]:flex items-center justify-around">
+    <header className="w-full fixed top-0 left-0 z-50 bg-black text-white min-[834px]:flex items-center justify-between px-6">
       {/* Top bar */}
       <div className="flex justify-between items-center p-4">
         <Link className="tracking-wider" to="/home">

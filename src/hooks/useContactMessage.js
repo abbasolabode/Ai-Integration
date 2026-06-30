@@ -9,9 +9,9 @@ export function useContactMessage() {
 
     const { mutate, isPending } = useMutation({
         mutationKey: ["contact"],
-        mutationFn: getContactDetails,
+        mutationFn: getContactDetails, // API function
         onSuccess: () => {
-            toast.success("Thanks for reaching to us! We'll get back to you shortly!"),
+            toast.success("Thanks for reaching out to us! We'll get back to you shortly!"),
                 queryClient.invalidateQueries({ queryKey: ["contact"] });
             setTimeout(() => {
                 navigate("/");
@@ -19,7 +19,7 @@ export function useContactMessage() {
         },
         //Display error message if there's an error while sending data to the backend
         onError: () => toast.error("Error occured while sending form data to the backend"),
-    })
+    });
 
     //Return the mutation message
     return { mutate, isPending };

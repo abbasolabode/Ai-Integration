@@ -42,7 +42,6 @@ export default function App() {
               <Route path="/careers" element={<Careers />} />
               <Route path="/contactUs" element={<ContactUs />} />
               <Route path="/newsDetails/:id" element={<NewsDetails />} />
-
             </Route>
           </Routes>
         </BrowserRouter>

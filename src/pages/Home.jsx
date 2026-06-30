@@ -11,6 +11,7 @@ import FeaturedProjects from "../ui/FeaturedProjects";
 import HomeBlog from "../ui/HomeBlog";
 import GetInTouch from "../ui/GetInTouch";
 
+
 export default function Home() {
   return (
     <div className="overflow-hidden">

@@ -71,7 +71,7 @@ export default function AboutCompanyCards() {
               stiffness: 250,
               damping: 18,
             }}
-            className="group bg-white p-4 md:p-5 rounded-lg shadow-sm border-gray-100 transition-all duration-300"
+            className="bg-white p-4 md:p-5 rounded-lg shadow-sm border-gray-100 transition-all duration-300"
           >
             <motion.span
               whileHover={{
@@ -101,7 +101,7 @@ export default function AboutCompanyCards() {
               initial={{ width: 0 }}
               whileHover={{ width: "100%" }}
               transition={{ duration: 0.4 }}
-              className="h-[2px] bg-blue-500 mt-4"
+              className="h-0.5 bg-blue-500 mt-4"
             />
           </motion.div>
         ))}

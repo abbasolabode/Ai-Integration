@@ -24,8 +24,8 @@ export default function ContactInput({
                     ...(pattern && { pattern }),
                 })}
                 className={`mt-2 block w-full rounded-2xl border bg-gray-50 p-4 text-lg placeholder-gray-400 focus:outline-none focus:ring-2 ${error?.[id]
-                        ? "border-red-300 focus:border-red-500 focus:ring-red-200"
-                        : "border-gray-200 focus:border-yellow-500 focus:ring-yellow-200"
+                    ? "border-red-300 focus:border-red-500 focus:ring-red-200"
+                    : "border-gray-200 focus:border-yellow-500 focus:ring-yellow-200"
                     }`}
             />
             {error?.[id] && (

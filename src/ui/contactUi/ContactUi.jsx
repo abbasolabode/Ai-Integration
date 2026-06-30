@@ -1,4 +1,3 @@
-import React from "react";
 import { FaWarehouse } from "react-icons/fa";
 import { CiLocationOn, CiMail, CiPhone } from "react-icons/ci";
 import { SyncLoader } from "react-spinners";
@@ -10,9 +9,8 @@ import { useContactMessage } from "../../hooks/useContactMessage";
 import ContactInput from "../../resuables/ContactInput";
 import ContactSubmitButton from "../../resuables/ContactSubmitButton";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
-// ─── Animation Variants ────────────────────────────────────────────────────────
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -77,7 +75,6 @@ const cardVariant = {
     },
 };
 
-// ─── Helper: Scroll-triggered section wrapper ──────────────────────────────────
 
 function InViewSection({ children, className, variants, custom, delay }) {
     const ref = useRef(null);
@@ -97,8 +94,7 @@ function InViewSection({ children, className, variants, custom, delay }) {
     );
 }
 
-// ─── Data ──────────────────────────────────────────────────────────────────────
-
+// ─── Data ─────────
 const selectOptions = [
     "Renovation & Remodelling",
     "Infrastructure",
@@ -159,15 +155,14 @@ const projectDetails = [
     },
 ];
 
-// ─── Component ─────────────────────────────────────────────────────────────────
-
+// ─── Component ────
 export default function ContactUi() {
-    const {
-        handleSubmit,
-        register,
-        reset,
-        formState: { errors, isSubmitting },
-    } = useForm();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+
+    const { handleSubmit, register, reset, formState: { errors, isSubmitting } } = useForm();
     const { mutate: sendFormData, isPending } = useContactMessage();
 
     const cardsRef = useRef(null);
@@ -517,4 +512,8 @@ export default function ContactUi() {
             </motion.form>
         </div>
     );
-}
+};
+
+
+
+

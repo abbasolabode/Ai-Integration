@@ -2,6 +2,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import GetInTouch from "../GetInTouch";
+import { useNewsDetails } from "../../hooks/useNewsDetails";
 
 //
 const cards = [
@@ -12,7 +13,7 @@ const cards = [
         smallOverlayText: "Featured",
         publishedDate: "June 12, 2026",
         desc: "Discover how wearable safety technology puts worker wellbeing first while delivering measurable business benefits through injury prevention and enhanced workplace safety.",
-        url: "/",
+        url: "/newsDetails/",
     },
     {
         id: 2,
@@ -21,7 +22,7 @@ const cards = [
         smallOverlayText: "Innovation",
         publishedDate: "June 12, 2026",
         desc: "Discover how wearable safety technology puts worker wellbeing first while delivering measurable business benefits through injury prevention and enhanced workplace safety.",
-        url: "/",
+        url: "/newsDetails/",
     },
     {
         id: 3,
@@ -30,7 +31,7 @@ const cards = [
         smallOverlayText: "Technology",
         publishedDate: "June 12, 2026",
         desc: "Discover how wearable safety technology puts worker wellbeing first while delivering measurable business benefits through injury prevention and enhanced workplace safety.",
-        url: "/",
+        url: "/newsDetails/",
     },
     {
         id: 4,
@@ -39,7 +40,7 @@ const cards = [
         smallOverlayText: "Process",
         publishedDate: "June 12, 2026",
         desc: "Discover how wearable safety technology puts worker wellbeing first while delivering measurable business benefits through injury prevention and enhanced workplace safety.",
-        url: "/",
+        url: "/newsDetails/",
     },
     {
         id: 5,
@@ -48,16 +49,17 @@ const cards = [
         smallOverlayText: "Innovation",
         publishedDate: "June 12, 2026",
         desc: "Discover how wearable safety technology puts worker wellbeing first while delivering measurable business benefits through injury prevention and enhanced workplace safety.",
-        url: "/",
+        url: "/newsDetails/",
     },
 ];
 
 
 export default function NewsUi() {
+    const { data = {}, isLoading } = useNewsDetails()
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
+    console.log(data)
 
     return (
         <section className="w-full min-h-screen ">
@@ -92,7 +94,7 @@ export default function NewsUi() {
                                 <p className="text-gray-500 text-sm mb-2">Published: {card.publishedDate}</p>
                                 <p className="text-gray-700 mb-4 line-clamp-3">{card.desc}</p>
                                 {/*  */}
-                                <Link to={`/newsDetails/${card.id}`} className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-stone-400/20 border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 group mt-auto"> Read More <IoIosArrowRoundForward /></Link>
+                                <Link to={`${card.url}${card.id}`} className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-stone-400/20 border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 group mt-auto"> Read More <IoIosArrowRoundForward /></Link>
                             </div>
                         </div>
                     ))}
@@ -103,27 +105,12 @@ export default function NewsUi() {
                 <GetInTouch />
             </>
         </section>
-    )
+    );
 };
 
-/* to={`/blogInfo/${item.id}`} */
-
-/* bg-cover bg-center h-64 md:h-full p-8 flex items-center justify-center */
-/* className=" col-span-1 md:col-span-2 lg:col-span-3 " */
 
 
-[
-  {
-    "id": 1,
-    "header": "Safety Outcome"
-  },
-  {
-    "id": 2,
-    "header": "Human Impact"
-  },
-  {
-    "id": 3,
-    "header": "Business Benefit"
-  },
 
-]
+
+
+

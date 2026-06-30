@@ -17,9 +17,9 @@ export default function Footer() {
         });
     }
     return (
-        <footer className="w-full bg-black text-white pt-16 pb-8">
+        <footer className="w-full bg-black text-white pt-16 pb-8 px-6">
             <div className="w-full px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col space-y-6">
+                <div className="w-full flex flex-col space-y-6 min-[700px]:grid min-[700px]:grid-cols-3 justify-center">
                     {/* Logo */}
                     <div className="lg:col-span-2 flex flex-col space-y-3">
                         <Link
@@ -29,7 +29,7 @@ export default function Footer() {
                             wrlds
                         </Link>
 
-                        <p className="text-gray-300 mb-6">
+                        <p className="text-gray-300 mb-6 min-[700px]:w-180">
                             WRLDS Technologies provides an end-to-end platform for
                             the creation and deployment of AI-powered smart sensor
                             devices, giving customers 100% ownership while handling
@@ -42,10 +42,7 @@ export default function Footer() {
                                 117 26, Stockholm Sweden
                             </p>
                         </address>
-                    </div>
 
-                    {/* Footer Content */}
-                    <div className="flex flex-col space-y-6 w-full">
                         {/* Social Icon */}
                         <div>
                             <a href="/">
@@ -55,25 +52,31 @@ export default function Footer() {
                                 />
                             </a>
                         </div>
+                    </div>
 
-                        {/* Links */}
-                        <div className="space-y-3">
-                            <h3 className="text-lg font-bold mb-4 text-white">
-                                Company
-                            </h3>
 
-                            <div className="flex flex-col gap-2">
-                                <Link className="text-gray-300 hover:text-white transition-colors inline-block whitespace-nowrap">
-                                    About Us
-                                </Link>
+                    <div className="flex items-center min-[700px]:w-125">
 
-                                <Link className="text-gray-300 hover:text-white transition-colors inline-block whitespace-nowrap">
-                                    Careers
-                                </Link>
+                        <div className="flex flex-col space-y-6 w-full">
+                            {/* Links */}
+                            <div className="space-y-3">
+                                <h3 className="text-lg font-bold mb-4 text-white">
+                                    Company
+                                </h3>
 
-                                <Link className="text-gray-300 hover:text-white transition-colors inline-block whitespace-nowrap">
-                                    Privacy Policy
-                                </Link>
+                                <div className="flex flex-col gap-2">
+                                    <Link className="text-gray-300 hover:text-white transition-colors inline-block whitespace-nowrap">
+                                        About Us
+                                    </Link>
+
+                                    <Link className="text-gray-300 hover:text-white transition-colors inline-block whitespace-nowrap">
+                                        Careers
+                                    </Link>
+
+                                    <Link className="text-gray-300 hover:text-white transition-colors inline-block whitespace-nowrap">
+                                        Privacy Policy
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 
@@ -92,7 +95,7 @@ export default function Footer() {
                                                 message: "Please enter a valid email address",
                                             },
                                         })}
-                                        className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-600 text-white placeholder-gray-400"
+                                        className="w-full px-4 py-2 bg-gray-800 min-[700px]:w-12.5 min-[800px]:w-75  focus:outline-none focus:ring-2 focus:ring-gray-600 text-white placeholder-gray-400"
                                         placeholder="Your email"
                                         type="email"
                                         name="email"
@@ -104,7 +107,7 @@ export default function Footer() {
 
                                 <button
                                     disabled={isPending || isSubmitting}
-                                    className="w-full px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50 cursor-pointer tracking-wider"
+                                    className="w-full px-4 py-2 bg-gray-700 min-[700px]:w-12.5 min-[800px]:w-75 text-white rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50 cursor-pointer tracking-wider"
                                     type="submit"
                                 >
                                     {!isPending || !isSubmitting ? <>Subscribe <IoIosArrowRoundForward size={20} /></> : <ClipLoader size={18} color="#ffffff" />}
@@ -113,10 +116,14 @@ export default function Footer() {
                             </form>
                         </div>
 
-                        <hr className="border-gray-700" />
+                    </div>
 
-                        {/* Bottom Section */}
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+
+                    {/* Bottom Section */}
+                    <div className="w-full flex flex-col items-center ">
+                        {/*  <hr className="border-gray-700 border" /> */}
+                        <div className="flex flex-col md:flex-row justify-between space-x- items-center gap-4 ">
+
                             <p className="text-sm tracking-wider font-light">
                                 WRLDS Technologies. All rights reserved.
                             </p>
