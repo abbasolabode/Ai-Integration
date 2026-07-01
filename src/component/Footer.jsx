@@ -118,8 +118,8 @@ export default function Footer() {
 
 
                     {/* Bottom Section */}
-                    <div className="w-full flex flex-col items-center">
-                        <div className="flex flex-col items-center justify-center gap-2 text-center md:flex-row md:gap-6">
+                    <div className="col-span-full flex justify-center px-4">
+                        <div className="flex w-full max-w-2xl flex-col items-center justify-center gap-2 text-center md:flex-row md:gap-6">
                             <p className="text-sm tracking-wider font-light">
                                 WRLDS Technologies. All rights reserved.
                             </p>
