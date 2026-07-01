@@ -10,7 +10,6 @@ export default function Footer() {
     const { register, handleSubmit, formState: { errors, isSubmitting }, reset, } = useForm()
     const onSubmit = ({ email }) => {
         if (!email) return;
-        console.log(email);
         //If email exists, send the email value to the backend
         mutate(email, {
             onSettled: reset(),
@@ -55,9 +54,8 @@ export default function Footer() {
                     </div>
 
 
-                    <div className="flex items-center min-[700px]:w-125">
-
-                        <div className="flex flex-col space-y-6 w-full">
+                    <div className="flex flex-col gap-8 lg:flex-row lg:justify-between lg:gap-12 w-full">
+                        <div className="flex flex-col space-y-6">
                             {/* Links */}
                             <div className="space-y-3">
                                 <h3 className="text-lg font-bold mb-4 text-white">
@@ -81,49 +79,47 @@ export default function Footer() {
                         </div>
 
                         {/* Get in Touch */}
-                        <div className="w-full">
+                        <div className="w-full max-w-md">
                             <h3 className="text-lg font-bold mb-4 text-white whitespace-nowrap">
                                 Get in Touch
                             </h3>
 
-                            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
-                                <div>
-                                    <input
-                                        {...register("email", {
-                                            pattern: {
-                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                                message: "Please enter a valid email address",
-                                            },
-                                        })}
-                                        className="w-full px-4 py-2 bg-gray-800 min-[700px]:w-12.5 min-[800px]:w-75  focus:outline-none focus:ring-2 focus:ring-gray-600 text-white placeholder-gray-400"
-                                        placeholder="Your email"
-                                        type="email"
-                                        name="email"
-                                        id="email"
-                                        disabled={isSubmitting || isPending}
-                                    />
-                                    {errors?.email?.message && <small className="text-[10px] text-red-500 tracking-wider">{errors?.email?.message}</small>}
+                            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3 w-full">
+                                <div className="flex flex-col gap-3 sm:flex-row sm:items-start">
+                                    <div className="flex-1 min-w-0">
+                                        <input
+                                            {...register("email", {
+                                                pattern: {
+                                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                    message: "Please enter a valid email address",
+                                                },
+                                            })}
+                                            className="w-full rounded-md border border-gray-700 bg-gray-800 px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                                            placeholder="Your email"
+                                            type="email"
+                                            name="email"
+                                            id="email"
+                                            disabled={isSubmitting || isPending}
+                                        />
+                                        {errors?.email?.message && <small className="mt-1 block text-[10px] text-red-500 tracking-wider">{errors?.email?.message}</small>}
+                                    </div>
+
+                                    <button
+                                        disabled={isPending || isSubmitting}
+                                        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-gray-700 px-4 py-3 text-white transition-colors hover:bg-gray-600 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+                                        type="submit"
+                                    >
+                                        {!isPending || !isSubmitting ? <>Subscribe <IoIosArrowRoundForward size={20} /></> : <ClipLoader size={18} color="#ffffff" />}
+                                    </button>
                                 </div>
-
-                                <button
-                                    disabled={isPending || isSubmitting}
-                                    className="w-full px-4 py-2 bg-gray-700 min-[700px]:w-12.5 min-[800px]:w-75 text-white rounded-md hover:bg-gray-600 transition-colors flex items-center justify-center disabled:opacity-50 cursor-pointer tracking-wider"
-                                    type="submit"
-                                >
-                                    {!isPending || !isSubmitting ? <>Subscribe <IoIosArrowRoundForward size={20} /></> : <ClipLoader size={18} color="#ffffff" />}
-
-                                </button>
                             </form>
                         </div>
-
                     </div>
 
 
                     {/* Bottom Section */}
-                    <div className="w-full flex flex-col items-center ">
-                        {/*  <hr className="border-gray-700 border" /> */}
-                        <div className="flex flex-col md:flex-row justify-between space-x- items-center gap-4 ">
-
+                    <div className="w-full flex flex-col items-center">
+                        <div className="flex flex-col items-center justify-center gap-2 text-center md:flex-row md:gap-6">
                             <p className="text-sm tracking-wider font-light">
                                 WRLDS Technologies. All rights reserved.
                             </p>
